@@ -2,6 +2,22 @@
 
 Independent hotel-domain portfolio demo. **All hotel, guest and request data is fictional.** No NearbyBooking source or live booking system is used. The simulator makes no phone call; a request is never a confirmed reservation.
 
+## What it demonstrates
+
+**Problem:** callers need answers and a way to leave a reservation request in Spanish or English, while hotel staff need to maintain those answers and review what happened.
+
+**Solution:** a CodeIgniter conversation flow shared by a browser simulator and Twilio voice webhooks. It guides language selection, answers hotel FAQs, and collects a fictional request. A Shield-protected AdminLTE panel manages answers and reviews calls and requests. Gemini is optional; local FAQs handle the demo without an API key.
+
+![Voice concierge simulator with fictional hotel imagery](docs/screenshots/voice-simulator.png)
+
+### Try the demo
+
+1. Start the app with the commands below and open the simulator.
+2. Choose **español** or **English**, ask about parking, then say **reserva** or **reservation** and enter test details.
+3. Create a local admin user to edit ES/EN answers and inspect the recorded request.
+
+**Evidence:** automated tests cover both languages, keypad selection, FAQs, invalid input and request storage. A locally signed mock Twilio webhook returned TwiML, while an unsigned request was rejected. The [silent walkthrough video](videos/voice-concierge-demo.webm) shows the simulator. A real Twilio trial call and Gemini responses remain **unverified** until provider credentials are configured.
+
 ## Stack and features
 
 - CodeIgniter 4.7 + SQLite: bilingual conversation state, FAQs, call log and request queue.
