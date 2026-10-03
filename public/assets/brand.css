@@ -1,0 +1,36 @@
+:root{--ink:#173f3b;--sea:#2c6664;--sand:#f7f6f1;--line:#d7e1da}
+.brand{display:inline-flex;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;line-height:1;letter-spacing:.11em}
+.brand small{display:block;margin-top:6px;font-size:8px;font-weight:500;letter-spacing:.24em;color:#c0d9d0}
+.brand-emblem{width:42px;height:42px;border:1px solid #e4efdf;border-radius:50%;display:grid;place-items:center;font:normal 27px 'Playfair Display',serif;flex:none}
+header,.app-header{box-shadow:0 8px 24px #133e3e18}
+header a,nav a{transition:opacity .2s ease}
+header a:hover,nav a:hover{opacity:.72}
+.cover-photo{position:relative;height:200px;margin:32px 0 25px;background:var(--sea) url('/images/coast.webp') center 54%/cover no-repeat;overflow:hidden}
+.cover-photo:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#092d377d,transparent 70%)}
+.cover-photo span{position:absolute;left:20px;bottom:17px;color:white;font-size:9px;font-weight:700;letter-spacing:.21em}
+.steps{margin-top:18px}
+.panel{border:1px solid #dce8e1;border-radius:2px;overflow:hidden}
+.panel{min-height:430px;align-self:start}
+.panel-top{background:var(--ink)}
+.empty-state{height:100%;min-height:255px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#173f3b;padding:28px}
+.voice-orbit{width:75px;height:75px;border:1px solid #b7d3c8;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 10px #e7f1eb,0 0 0 11px #d1e4d8;margin-bottom:25px}
+.voice-orbit span{font:36px 'Playfair Display',serif;color:#2c6664}
+.empty-state h2{font:400 25px 'Playfair Display',serif;margin:0 0 8px}
+.empty-state p{font-size:12px;line-height:1.6;max-width:250px;margin:0;color:#6a837b}
+.message{box-shadow:0 2px 6px #173f3b08}
+.controls input:focus,.faq-grid input:focus,.faq-grid textarea:focus{outline:2px solid #b98d59;outline-offset:2px}
+.controls input:disabled,.controls button:disabled{opacity:.5;cursor:not-allowed}
+.reset button.start{background:var(--ink);color:#fff;padding:14px 21px;font-size:12px;font-weight:700;letter-spacing:.08em}
+button:focus-visible,a:focus-visible{outline:3px solid #b98d59;outline-offset:3px}
+.controls button:hover,.reset button:hover{filter:brightness(1.16)}
+.admin-cover{height:178px;margin:0 0 28px;position:relative;background:var(--sea) url('/images/coast.webp') center 48%/cover no-repeat;display:flex;align-items:flex-end;padding:20px 26px;color:#fff}
+.admin-cover:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#123d3dcc,transparent 80%)}
+.admin-cover span{position:relative;font-size:11px;letter-spacing:.2em;font-weight:700}
+.admin-cover b{color:#e7bd82}
+.content .card{border:1px solid #e0e9e1;box-shadow:0 9px 27px #173f3b0c}
+.content .card-header{background:#f8faf7}
+.content .btn-success{background:#286461;border-color:#286461}
+.content .btn-success:hover{background:#173f3b}
+@media(max-width:850px){.cover-photo{height:190px}.admin-cover{height:145px}}
+@media(min-width:851px){main{padding-top:5%;padding-bottom:5%}}
+@media(prefers-reduced-motion:reduce){header a,nav a{transition:none}}

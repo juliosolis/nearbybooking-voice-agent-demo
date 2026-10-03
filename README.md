@@ -42,3 +42,7 @@ vendor\bin\phpunit --no-coverage tests\VoiceFlowTest.php
 ```
 
 The automated tests cover Spanish, English, keypad language choice, FAQ answers, invalid empty speech and a stored request. Browser smoke testing covered an English request and the public admin redirect. A locally signed mock webhook returned `200` and TwiML `<Gather>`; an unsigned webhook returned `403`. A live Twilio trial call and Gemini quota/error behavior still require provider credentials and were not claimed as completed. The local, silent browser walkthrough is in `videos/voice-concierge-demo.webm`.
+
+## Visual assets
+
+The coastal hotel photograph was generated for this fictional project, optimized as `public/images/coast.webp` and reused in the simulator and admin panel. Matching SVG, ICO and PNG favicons, app icons and social preview are under `public`. It does not depict an operating hotel.
