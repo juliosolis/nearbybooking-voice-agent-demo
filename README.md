@@ -7,7 +7,7 @@ Independent hotel-domain portfolio demo. **All hotel, guest and request data is 
 - CodeIgniter 4.7 + SQLite: bilingual conversation state, FAQs, call log and request queue.
 - Shield: login-protected admin dashboard, with public registration disabled.
 - AdminLTE 4: adapted dashboard to edit ES/EN answers and review requests.
-- Twilio Voice: `<Gather input="speech">` and `<Say>` turn flow in `es-MX` or `en-US`, with `X-Twilio-Signature` validation on every webhook.
+- Twilio Voice: `<Gather input="speech dtmf">` and `<Say>` turn flow in `es-MX` or `en-US`, with `X-Twilio-Signature` validation on every webhook.
 - Optional Gemini Developer API: answers constrained to fictitious hotel facts. Missing key, errors and non-200 responses fall back to local FAQs or an honest unknown answer.
 
 ## Local setup
@@ -22,7 +22,7 @@ php spark db:seed DemoSeeder
 php spark serve --host 127.0.0.1 --port 8081
 ```
 
-Open `http://127.0.0.1:8081`, start a simulated call and say `español` or `English`. Ask about `estacionamiento`/`parking`, then say `reserva`/`reservation`, a test name and a preferred date. The simulator and Twilio use the same `Conversation` class. The `.env` and SQLite database are ignored by Git.
+Open `http://127.0.0.1:8081`, start a simulated call and say `español` or `English` (or press 1/2 in Twilio). Ask about `estacionamiento`/`parking`, then say `reserva`/`reservation`, a test name and a preferred date. The simulator and Twilio use the same `Conversation` class. The `.env` and SQLite database are ignored by Git.
 
 To enable admin, create a local Shield account with `php spark shield:user create -n admin -e admin@example.test` and follow the password prompt. Open `/login` and then `/admin`. Public self-registration is disabled. Do not use a real email or password from another account.
 
@@ -41,4 +41,4 @@ The Twilio webhook URL must match the externally visible URL used for signing. I
 vendor\bin\phpunit --no-coverage tests\VoiceFlowTest.php
 ```
 
-The automated tests cover Spanish, English, FAQ answers, invalid empty speech and a stored request. Browser smoke testing covered an English request and the public admin redirect. An unsigned webhook returns `403`. A live Twilio trial call and Gemini quota/error behavior still require provider credentials and were not claimed as completed. The local, silent browser walkthrough is in `videos/voice-concierge-demo.webm`.
+The automated tests cover Spanish, English, keypad language choice, FAQ answers, invalid empty speech and a stored request. Browser smoke testing covered an English request and the public admin redirect. A locally signed mock webhook returned `200` and TwiML `<Gather>`; an unsigned webhook returned `403`. A live Twilio trial call and Gemini quota/error behavior still require provider credentials and were not claimed as completed. The local, silent browser walkthrough is in `videos/voice-concierge-demo.webm`.

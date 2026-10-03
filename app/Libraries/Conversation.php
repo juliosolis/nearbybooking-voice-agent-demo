@@ -9,7 +9,7 @@ class Conversation
         if (!$this->db->table('demo_calls')->where('call_sid', $sid)->countAllResults()) {
             $this->db->table('demo_calls')->insert(['call_sid' => $sid, 'locale' => 'es', 'state' => 'language', 'question_count' => 0, 'created_at' => date('Y-m-d H:i:s')]);
         }
-        return 'Bienvenido a Hotel Mirador Azul. Para español, diga español. For English, say English.';
+        return 'Bienvenido a Hotel Mirador Azul. Para español, diga español o marque uno. For English, say English or press two.';
     }
     public function turn(string $sid, string $speech): array
     {
@@ -20,7 +20,7 @@ class Conversation
         if ($speech === '') {
             $text = $locale === 'en' ? 'I did not hear you. Please try again.' : 'No escuché su respuesta. Intente otra vez.';
         } elseif ($state === 'language') {
-            $locale = preg_match('/english|ingl[eé]s|two|dos/i', $speech) ? 'en' : 'es';
+            $locale = preg_match('/^(2|two|dos)$|english|ingl[eé]s/i', $speech) ? 'en' : 'es';
             $state = 'ready';
             $text = $locale === 'en' ? 'Ask about the hotel, or say reservation to send a request.' : 'Pregunte sobre el hotel o diga reserva para enviar una solicitud.';
         } elseif ($state === 'name') {

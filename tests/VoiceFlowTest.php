@@ -36,6 +36,13 @@ final class VoiceFlowTest extends CIUnitTestCase
         self::assertStringContainsString('No tengo', $flow->turn($sid, 'precio de submarino')['text']);
     }
 
+    public function testKeypadSelectsEnglish(): void
+    {
+        $flow = new Conversation($this->db);
+        $flow->begin('SIM-test-keypad');
+        self::assertSame('en', $flow->turn('SIM-test-keypad', '2')['locale']);
+    }
+
     public function testEmptyInputDoesNotAdvanceState(): void
     {
         $flow = new Conversation($this->db);
