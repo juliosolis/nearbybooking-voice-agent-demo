@@ -34,3 +34,56 @@ button:focus-visible,a:focus-visible{outline:3px solid #b98d59;outline-offset:3p
 @media(max-width:850px){.cover-photo{height:190px}.admin-cover{height:145px}}
 @media(min-width:851px){main{padding-top:5%;padding-bottom:5%}}
 @media(prefers-reduced-motion:reduce){header a,nav a{transition:none}}
+
+/* The simulator reads like a hotel's call log, not a generic chat card. */
+body { background: #f4f0e7; }
+header { background: #18352f; border-bottom: 3px solid #ba7957; }
+main { grid-template-columns: .95fr 1.05fr; gap: 5%; }
+main > section:first-child { position: relative; }
+main > section:first-child:before {
+  content: '01 / GUEST SERVICES';
+  position: absolute;
+  top: -43px;
+  left: 0;
+  color: #9d694d;
+  font: 700 10px 'DM Sans', sans-serif;
+  letter-spacing: .2em;
+}
+main h1 { max-width: 640px; letter-spacing: -.045em; }
+.cover-photo { height: 260px; border: 7px solid #e3ded0; transform: rotate(-1deg); box-shadow: 0 16px 34px #173f3b21; }
+.cover-photo span { background: #173f3bdd; padding: 7px 10px; left: 12px; bottom: 12px; }
+.steps li { display: flex; align-items: baseline; gap: 4px; border-color: #d6d0c1; }
+.steps span { font: 500 23px 'Playfair Display', serif; color: #bb7852; flex: none; }
+.panel { border: 2px solid #18352f; box-shadow: 12px 12px 0 #d5d5c8; min-height: 540px; }
+.panel-top { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 18px; background: #18352f; padding: 22px 25px 15px; }
+.channel-title { font-size: 12px; letter-spacing: .14em; }
+.channel-live { color: #dba677; font-size: 9px; white-space: nowrap; }
+.panel-top small { margin: 0; grid-column: 1; color: #c4d4c1; }
+.waveform { grid-column: 1 / -1; display: flex; align-items: center; gap: 5px; height: 31px; margin-top: 8px; border-top: 1px solid #507367; padding-top: 11px; }
+.waveform i { width: 4px; height: 8px; background: #d8a278; display: block; opacity: .8; }
+.waveform i:nth-child(3n) { height: 18px; }
+.waveform i:nth-child(4n) { height: 12px; }
+.waveform i:nth-child(7) { height: 22px; }
+.messages { background: #f8f7f2; }
+.message { border-radius: 2px; box-shadow: none; border-left: 3px solid #93a99b; background: #e9eee8; }
+.message.guest { border-left: 0; border-right: 3px solid #bc7a56; background: #f0e7dc; }
+.controls { background: #f8f7f2; }
+.controls button { background: #bd7550; }
+.reset { background: #f8f7f2; }
+.reset button.start { background: #bd7550; }
+.empty-state { background-image: radial-gradient(#cbd9ca 1px, transparent 1px); background-size: 19px 19px; }
+.empty-state h2 { background: #f8f7f2; padding: 2px 8px; }
+.empty-state p { background: #f8f7f2; padding: 4px 8px; }
+.app-header { border-bottom: 3px solid #ba7957; }
+.content .card { border-radius: 0; border-left: 3px solid #ba7957; }
+.content .card-header { background: #f2eee3; }
+@media (max-width: 850px) {
+  main { grid-template-columns: 1fr; padding-bottom: 90px; }
+  main > section:first-child:before { display: none; }
+  .cover-photo { height: 200px; }
+  .panel { box-shadow: 7px 7px 0 #d5d5c8; }
+}
+@media (max-width: 480px) {
+  .channel-live { grid-column: 1; }
+  .panel-top small { grid-column: 1; }
+}
